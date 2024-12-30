@@ -11,7 +11,7 @@ namespace Restaurants.API.Controllers
 {
     [ApiController]
     [Route("api/restaurants")]
-    public class RestaurantsController : ControllerBase
+    public class RestaurantsController : ControllerBase 
     {
         private readonly IMediator _mediator;
         public RestaurantsController(IMediator mediator) 
