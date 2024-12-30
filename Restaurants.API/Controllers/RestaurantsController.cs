@@ -27,7 +27,7 @@ namespace Restaurants.API.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public async Task<IActionResult> GetById([FromRoute]int id)
+        public async Task<IActionResult> GetById([FromRoute]int id) 
         {
             var restaurant = await _mediator.Send(new GetRestaurantByIdQuery(id));
 
