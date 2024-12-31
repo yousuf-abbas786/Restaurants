@@ -16,13 +16,6 @@ namespace Restaurants.Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<int> CreateAsync(Restaurant entity)
-        {
-            _context.Restaurants.Add(entity);
-            await _context.SaveChangesAsync();
-            return entity.Id;
-        }
-
         public async Task<IEnumerable<Restaurant>> GetAllAsync()
         {
             return await _context.Restaurants
@@ -35,6 +28,24 @@ namespace Restaurants.Infrastructure.Repositories
             return await _context.Restaurants
                 .Include(x => x.Dishes)
                 .FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public async Task<int> CreateAsync(Restaurant entity)
+        {
+            _context.Restaurants.Add(entity);
+            await _context.SaveChangesAsync();
+            return entity.Id;
+        }
+        public async Task<bool> UpdateAsync(Restaurant entity)
+        {
+            _context.Entry(entity).State = EntityState.Modified;
+            return await _context.SaveChangesAsync() > 0;
+        }
+
+        public async Task<bool> DeleteAsync(Restaurant restaurant)
+        {
+            _context.Remove(restaurant);
+            return await _context.SaveChangesAsync() > 0;
         }
     }
 }

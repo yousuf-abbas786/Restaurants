@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 
 using Restaurants.Application.Restaurants.Commands.CreateRestaurant;
+using Restaurants.Application.Restaurants.Commands.UpdateRestaurant;
 using Restaurants.Domain.Entities;
 
 namespace Restaurants.Application.Restaurants.DTOs
@@ -19,6 +20,8 @@ namespace Restaurants.Application.Restaurants.DTOs
                         }
                     )
                 );
+
+            CreateMap<UpdateRestaurantCommand, Restaurant>();
 
             CreateMap<Restaurant, RestaurantDto>()
                 .ForMember(d => d.City, opt =>
