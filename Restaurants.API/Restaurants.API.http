@@ -33,7 +33,7 @@ Content-Type: application/json
 
 
 
-DELETE {{Restaurants.API_HostAddress}}/api/restaurants/4
+DELETE {{Restaurants.API_HostAddress}}/api/restaurants/3
 
 ###
 

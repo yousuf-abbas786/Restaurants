@@ -36,16 +36,16 @@ namespace Restaurants.Infrastructure.Repositories
             await _context.SaveChangesAsync();
             return entity.Id;
         }
-        public async Task<bool> UpdateAsync(Restaurant entity)
+        public async Task UpdateAsync(Restaurant entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
-            return await _context.SaveChangesAsync() > 0;
+            await _context.SaveChangesAsync();
         }
 
-        public async Task<bool> DeleteAsync(Restaurant restaurant)
+        public async Task DeleteAsync(Restaurant restaurant)
         {
             _context.Remove(restaurant);
-            return await _context.SaveChangesAsync() > 0;
+            await _context.SaveChangesAsync();
         }
     }
 }

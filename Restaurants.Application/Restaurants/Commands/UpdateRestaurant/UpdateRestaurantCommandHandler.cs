@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using Restaurants.Application.Restaurants.Commands.DeleteRestaurant;
 using Restaurants.Application.Restaurants.DTOs;
 using Restaurants.Domain.Entities;
+using Restaurants.Domain.Exceptions;
 using Restaurants.Domain.Repositories;
 
 using System;
@@ -17,7 +18,7 @@ using System.Threading.Tasks;
 
 namespace Restaurants.Application.Restaurants.Commands.UpdateRestaurant
 {
-    public class UpdateRestaurantCommandHandler : IRequestHandler<UpdateRestaurantCommand, bool>
+    public class UpdateRestaurantCommandHandler : IRequestHandler<UpdateRestaurantCommand>
     {
         private readonly ILogger<UpdateRestaurantCommandHandler> _logger;
         private readonly IRestaurantsRepository _repository;
@@ -30,18 +31,15 @@ namespace Restaurants.Application.Restaurants.Commands.UpdateRestaurant
             _mapper = mapper;
         }
 
-        public async Task<bool> Handle(UpdateRestaurantCommand request, CancellationToken cancellationToken)
+        public async Task Handle(UpdateRestaurantCommand request, CancellationToken cancellationToken)
         {
             _logger.LogInformation($"Updating restaurant by id: {request.Id}");
             var restaurant = await _repository.GetByIdAsync(request.Id);
-            if (restaurant == null)
-            {
-                return false;
-            }
+            if (restaurant is null)
+                throw new NotFoundException(nameof(Restaurant), request.Id.ToString());
 
             restaurant = _mapper.Map(request, restaurant);
-
-            return await _repository.UpdateAsync(restaurant);
+            await _repository.UpdateAsync(restaurant);
 
         }
     }

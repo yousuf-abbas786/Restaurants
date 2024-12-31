@@ -4,11 +4,13 @@ using Microsoft.Extensions.Logging;
 
 using Restaurants.Application.Restaurants.Commands.CreateRestaurant;
 using Restaurants.Application.Restaurants.DTOs;
+using Restaurants.Domain.Entities;
+using Restaurants.Domain.Exceptions;
 using Restaurants.Domain.Repositories;
 
 namespace Restaurants.Application.Restaurants.Queries.GetRestaurantById
 {
-    public class GetRestaurantByIdQueryHandler : IRequestHandler<GetRestaurantByIdQuery, RestaurantDto?>
+    public class GetRestaurantByIdQueryHandler : IRequestHandler<GetRestaurantByIdQuery, RestaurantDto>
     {
         private readonly ILogger<GetRestaurantByIdQueryHandler> _logger;
         private readonly IMapper _mapper;
@@ -21,10 +23,10 @@ namespace Restaurants.Application.Restaurants.Queries.GetRestaurantById
             _repository = repository;
         }
 
-        public async Task<RestaurantDto?> Handle(GetRestaurantByIdQuery request, CancellationToken cancellationToken)
+        public async Task<RestaurantDto> Handle(GetRestaurantByIdQuery request, CancellationToken cancellationToken)
         {
-            _logger.LogInformation($"Getting restaurant by Id: {request.Id}");
-            var restaurant = await _repository.GetByIdAsync(request.Id);
+            _logger.LogInformation("Getting restaurant by Id: {Id}", request.Id);
+            var restaurant = await _repository.GetByIdAsync(request.Id) ?? throw new NotFoundException(nameof(Restaurant), request.Id.ToString());
 
             var restaurantDto = _mapper.Map<RestaurantDto>(restaurant);
 
