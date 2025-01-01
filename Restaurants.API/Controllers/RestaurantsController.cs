@@ -11,7 +11,7 @@ using Restaurants.Application.Restaurants.Queries.GetRestaurantById;
 namespace Restaurants.API.Controllers
 {
     [ApiController]
-    [Route("api/restaurants")]
+    [Route("api/[controller]")]
     public class RestaurantsController : ControllerBase 
     {
         private readonly IMediator _mediator;
