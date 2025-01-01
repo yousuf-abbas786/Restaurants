@@ -1,10 +1,12 @@
 @host = https://localhost
 @port = 7059
+@token = CfDJ8Lz_EizIg3JIkV6SV7p4wuhAdw3qEi0lBfsj7LLXe18dFR4RzLetztW7CTgveiaXrpGNhPLWqJEAHMJnWPQ0qDCh4wc2y43-JkD7gedFnt7dDL6zHfESy1z3Skjg6HlmBr7LEcBav3CArw-bNkWJut2LKdfM9OFUI8i7kgR_pFpanxFyZ8XB5MQuGRfioacgilxnIgHO6n6h-1j4t_PnMEI5zS5qVwc7NEefMSQHOrxqQeel4Kxot_lCTCi5D9aErpBYTb_zjjpVZ6oZ6WtBiBS4DXQInaeVWoflh7Ci6zO75bO5KVUHlsurY-25I8_gM2JjY4ojhFnkdR2PU3IiYutJ3pr1pEXqrGx0nkqgSbLhdv5pjiCiVjrXg51-wZARco4-nsLTDsaapOIo9dZn51SNZVSwzJK2k1LNjl6docEIxmr-rBg_fvVWzrUTx8MYkcyGdKqrj63KnR4awrdQ-iShq9oPliEz4v3WPGE_1o2Rq4YbS1GhewiJGbKUahKg_AdhF0wy8_dJ2vyYZNggV3DS13RrNB0Jn1t3g0IEwt9TU8VCNJ5F9IDETKJ1PwbdhcRccSR9O5lTNgYRZhclxYHbuR0pPDb5iE-7VY5fR7af9FOnimSNNPJ1bIGNo3kdfCBI-pYsEC7qljLqzj_C5PbtGB5RmhJe0X9I2_YI0PrTQg2vbf4lp_EN9PZfNflsz0wgi4tau-Xbzxum1BVmG1A
 
 @Restaurants.API_HostAddress = https://localhost:7059
 
 
 GET {{Restaurants.API_HostAddress}}/api/restaurants
+Authorization: Bearer {{token}}
 
 ###
 
@@ -72,3 +74,19 @@ GET {{Restaurants.API_HostAddress}}/api/restaurants/5/dishes/5
 DELETE {{Restaurants.API_HostAddress}}/api/restaurants/5/dishes
 
 ###
+
+POST {{Restaurants.API_HostAddress}}/api/identity/register
+Content-Type: application/json
+{
+  "email": "yousuf.abbas@hotmail.com",
+  "password": "M@d@com786"
+}
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/identity/login
+Content-Type: application/json
+{
+  "email": "yousuf.abbas@hotmail.com",
+  "password": "M@d@com786"
+}
