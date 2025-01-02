@@ -1,6 +1,6 @@
 @host = https://localhost
 @port = 7059
-@token = CfDJ8Lz_EizIg3JIkV6SV7p4wuhAdw3qEi0lBfsj7LLXe18dFR4RzLetztW7CTgveiaXrpGNhPLWqJEAHMJnWPQ0qDCh4wc2y43-JkD7gedFnt7dDL6zHfESy1z3Skjg6HlmBr7LEcBav3CArw-bNkWJut2LKdfM9OFUI8i7kgR_pFpanxFyZ8XB5MQuGRfioacgilxnIgHO6n6h-1j4t_PnMEI5zS5qVwc7NEefMSQHOrxqQeel4Kxot_lCTCi5D9aErpBYTb_zjjpVZ6oZ6WtBiBS4DXQInaeVWoflh7Ci6zO75bO5KVUHlsurY-25I8_gM2JjY4ojhFnkdR2PU3IiYutJ3pr1pEXqrGx0nkqgSbLhdv5pjiCiVjrXg51-wZARco4-nsLTDsaapOIo9dZn51SNZVSwzJK2k1LNjl6docEIxmr-rBg_fvVWzrUTx8MYkcyGdKqrj63KnR4awrdQ-iShq9oPliEz4v3WPGE_1o2Rq4YbS1GhewiJGbKUahKg_AdhF0wy8_dJ2vyYZNggV3DS13RrNB0Jn1t3g0IEwt9TU8VCNJ5F9IDETKJ1PwbdhcRccSR9O5lTNgYRZhclxYHbuR0pPDb5iE-7VY5fR7af9FOnimSNNPJ1bIGNo3kdfCBI-pYsEC7qljLqzj_C5PbtGB5RmhJe0X9I2_YI0PrTQg2vbf4lp_EN9PZfNflsz0wgi4tau-Xbzxum1BVmG1A
+@token = CfDJ8Lz_EizIg3JIkV6SV7p4wuimp03T8d9ltb3sYLTI6AjNZZO0U6kb9T3_RzNOOqCV8SCyKd_S75vP1dGWXQL0plVp8OItXGPQz7wfO27al6muDOVrnW2PQDSitt6sc3aRPNkHDewLb7qE3RzIG1eGgUbTbsWL6ra4UiEXpfXFM4pyzG4sD8ROe22SVKG7eWMeAwUBHdCttms84p4akJHYDfYHh_jLAvplagAEXtJ10VUsXLPBAA3Gk3QDAeK_HnNFEgpYpErsgvi-t1OJpmBi9VnonbpSY3uBKbzHcIHDiYzpZpgY-rZHCMynL9t1UQZN9MqggSJ8JdYTLOk5CLkKcfKKo2KA90P_43QIfRIFj8BlYysWlZZ8u_yj6sYPkcyeMgs9qDEX1ij2PbtysmP3vGkP5yH1rvs-Sdsh0Mr8NglnvaP9YKSL1HK90bLkg54Dw0pNnEk7gg2sJ5aznNZWfxASjpoBXJjDUAt_l9qVzyBXRy3U22_moyCcFMjh4gI4-K0JRcqPmQWvoTwosT7IhIS3lV15edaR8AmZD42EF-IoBzQtXMfXSrfC3JjeTtiuxxRMG9uHxp1oAgvTPxR9_Q44pe22ITXZ-So4GexcOaoQ9tmFBfVa3QYEJ_z0_1WPlxX5MF3znPD2817NQnA0OffZRQPmqvLcbfmeyHBLH6lQAXOX54uycJ_JGsAkEzD7yRhTDUUfzy8q_aAeL-W3B1LsP0a2n__YVy-bD0Sb-N9Y4lADIOkniy3gNaQ5_UKZs2DvMbkpE8co6i_3LvbYe5-QuNysvUxg2Dx_C567gg8L
 
 @Restaurants.API_HostAddress = https://localhost:7059
 
@@ -11,16 +11,18 @@ Authorization: Bearer {{token}}
 ###
 
 GET {{Restaurants.API_HostAddress}}/api/restaurants/5
+Authorization: Bearer {{token}}
 
 ###
 
 
 
 POST {{Restaurants.API_HostAddress}}/api/restaurants
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-    "Name": "Spicy Delights 2",
+    "Name": "Spicy Delights 3",
   "Description": "A culinary exerience like no other",
   "Category": "Italian",
   "HasDelivery": true,
@@ -78,7 +80,7 @@ DELETE {{Restaurants.API_HostAddress}}/api/restaurants/5/dishes
 POST {{Restaurants.API_HostAddress}}/api/identity/register
 Content-Type: application/json
 {
-  "email": "yousuf.abbas@hotmail.com",
+  "email": "owner@test.com",
   "password": "M@d@com786"
 }
 
