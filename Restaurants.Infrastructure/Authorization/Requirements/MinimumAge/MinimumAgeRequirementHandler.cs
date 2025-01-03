@@ -2,10 +2,9 @@
 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Logging;
-
 using Restaurants.Application.Users;
 
-namespace Restaurants.Infrastructure.Authorization.Requirements
+namespace Restaurants.Infrastructure.Authorization.Requirements.MinimumAge
 {
     public class MinimumAgeRequirementHandler : AuthorizationHandler<MinimumAgeRequirement>
     {

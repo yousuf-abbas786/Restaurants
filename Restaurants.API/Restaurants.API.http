@@ -1,6 +1,6 @@
 @host = https://localhost
 @port = 7059
-@token = CfDJ8Lz_EizIg3JIkV6SV7p4wuimp03T8d9ltb3sYLTI6AjNZZO0U6kb9T3_RzNOOqCV8SCyKd_S75vP1dGWXQL0plVp8OItXGPQz7wfO27al6muDOVrnW2PQDSitt6sc3aRPNkHDewLb7qE3RzIG1eGgUbTbsWL6ra4UiEXpfXFM4pyzG4sD8ROe22SVKG7eWMeAwUBHdCttms84p4akJHYDfYHh_jLAvplagAEXtJ10VUsXLPBAA3Gk3QDAeK_HnNFEgpYpErsgvi-t1OJpmBi9VnonbpSY3uBKbzHcIHDiYzpZpgY-rZHCMynL9t1UQZN9MqggSJ8JdYTLOk5CLkKcfKKo2KA90P_43QIfRIFj8BlYysWlZZ8u_yj6sYPkcyeMgs9qDEX1ij2PbtysmP3vGkP5yH1rvs-Sdsh0Mr8NglnvaP9YKSL1HK90bLkg54Dw0pNnEk7gg2sJ5aznNZWfxASjpoBXJjDUAt_l9qVzyBXRy3U22_moyCcFMjh4gI4-K0JRcqPmQWvoTwosT7IhIS3lV15edaR8AmZD42EF-IoBzQtXMfXSrfC3JjeTtiuxxRMG9uHxp1oAgvTPxR9_Q44pe22ITXZ-So4GexcOaoQ9tmFBfVa3QYEJ_z0_1WPlxX5MF3znPD2817NQnA0OffZRQPmqvLcbfmeyHBLH6lQAXOX54uycJ_JGsAkEzD7yRhTDUUfzy8q_aAeL-W3B1LsP0a2n__YVy-bD0Sb-N9Y4lADIOkniy3gNaQ5_UKZs2DvMbkpE8co6i_3LvbYe5-QuNysvUxg2Dx_C567gg8L
+@token = CfDJ8Lz_EizIg3JIkV6SV7p4wuhE4V5eimyc7M60HvsV2XKfCWstPGJMjMKCJVpITw-IxxpwV8QPRb4JTEFoSfEaOXsQ3n0jf5azBS0uf0dD8lMbcXtxXr8Ye7UVaRmhe_IpaXL4uaT97c14U869NttQvtQEfPblCMvkoMK2s8W6mNXdvfEc_jRMywHEZPKJ8tgPoQTyhSHe6zkBFm3FdVdGV_o_RQmtMIzsnmNc0vNVhLDjG_15nbUCHqLKO9sxegK1aUJoMZN7SxhFsmF9qmc8BEk4J_SlZcOa0Y4_vcrVGC5hF2WPp7WiI7gA9R2cnRdEewfqRtIm5mJ_I9pQgg-2aNYlS2S3CXY-nyWySvxxeOpULK1cGj227TNv5nj8ywub3XZiZaRWFD-LuI4UnFXWd8vsVPuNQPn7poJPpZG__8aIg4mUO6E4LJF8HlDGLuvA4hs8qW5zOFfTmAILwzk2nHdLpcGDPC9lJsyTRtQ72KF37LbueyFYiWj6xcmWh0MwZbRiyNwmNuWoCh_8w1Cp54Lg-7y29lxI7JVlFoiCsGsySL_hTGmGNP0uhcNrkCZ_c4UGh6wD_iX0wBmmzTMDaZm3dG3lrSU-RsPp6hpsCut02N4jXoSQt076B7ldKJcSU74w6fCvlX8NQgrndDLfabZcTP39JeBJJ2KlhF2K6s0yz8WdBejAqqRjvaDOqyC3ETVv4L1VKFOxa196Q503KWQKOTSXEnuYCC68jerJBdrcfoFpFjzCrMt-KYvKTgUMzLdYlVe7PXQzEfOFGqd5J0R1WSMlGXEtaefPMtJ-wJCb0sCotvdoWTkIv3ZO5V5CiePZFTQChbZlWNxvn5nMqN4qMFDJbjmSoKObAzbkaJGXClzIYlHjk2c7r1maGHxVOtNCGkTqBzPwJiLJ7OswuTg
 
 @Restaurants.API_HostAddress = https://localhost:7059
 
@@ -22,7 +22,7 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-    "Name": "Spicy Delights 3",
+    "Name": "Spicy Delights 4",
   "Description": "A culinary exerience like no other",
   "Category": "Italian",
   "HasDelivery": true,
@@ -42,12 +42,13 @@ DELETE {{Restaurants.API_HostAddress}}/api/restaurants/3
 ###
 
 
-PATCH {{Restaurants.API_HostAddress}}/api/restaurants/4
+PATCH {{Restaurants.API_HostAddress}}/api/restaurants/8
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
-  "Name": "Spicy Jet 1234",
-  "Description": "A culinary exerience like no other 1234",
+  "Name": "updated name Spicy Delights 3",
+  "Description": "updated A culinary exerience like no other deights 3",
   "HasDelivery": false
 }
 
@@ -89,6 +90,6 @@ Content-Type: application/json
 POST {{Restaurants.API_HostAddress}}/api/identity/login
 Content-Type: application/json
 {
-  "email": "yousuf.abbas@hotmail.com",
+  "email": "user@test.com",
   "password": "M@d@com786"
 }

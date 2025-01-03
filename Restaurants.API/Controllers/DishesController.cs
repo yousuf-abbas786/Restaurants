@@ -29,7 +29,7 @@ namespace Restaurants.API.Controllers
         }
 
         [HttpGet]
-        [Authorize(Policy = PolicyNames.Atleast20)]
+        //[Authorize(Policy = PolicyNames.Atleast20)]
         public async Task<ActionResult<IEnumerable<DishDto>>> GetAllForRestaurant ([FromRoute] int restaurantId)
         {
             var dishes = await _mediator.Send(new GetDishesForRestaurantQuery(restaurantId));

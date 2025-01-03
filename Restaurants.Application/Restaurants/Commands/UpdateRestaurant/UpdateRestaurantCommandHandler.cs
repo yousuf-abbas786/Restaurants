@@ -6,8 +6,10 @@ using Microsoft.Extensions.Logging;
 
 using Restaurants.Application.Restaurants.Commands.DeleteRestaurant;
 using Restaurants.Application.Restaurants.DTOs;
+using Restaurants.Domain.Constants;
 using Restaurants.Domain.Entities;
 using Restaurants.Domain.Exceptions;
+using Restaurants.Domain.Interfaces;
 using Restaurants.Domain.Repositories;
 
 using System;
@@ -23,12 +25,14 @@ namespace Restaurants.Application.Restaurants.Commands.UpdateRestaurant
         private readonly ILogger<UpdateRestaurantCommandHandler> _logger;
         private readonly IRestaurantsRepository _repository;
         private readonly IMapper _mapper;
+        private readonly IRestaurantAuthorizationService _restaurantAuthorizationService;
 
-        public UpdateRestaurantCommandHandler(ILogger<UpdateRestaurantCommandHandler> logger, IRestaurantsRepository repository, IMapper mapper)
+        public UpdateRestaurantCommandHandler(ILogger<UpdateRestaurantCommandHandler> logger, IRestaurantsRepository repository, IMapper mapper, IRestaurantAuthorizationService restaurantAuthorizationService)
         {
             _logger = logger;
             _repository = repository;
             _mapper = mapper;
+            _restaurantAuthorizationService = restaurantAuthorizationService;
         }
 
         public async Task Handle(UpdateRestaurantCommand request, CancellationToken cancellationToken)
@@ -37,8 +41,10 @@ namespace Restaurants.Application.Restaurants.Commands.UpdateRestaurant
             var restaurant = await _repository.GetByIdAsync(request.Id);
             if (restaurant is null)
                 throw new NotFoundException(nameof(Restaurant), request.Id.ToString());
-
             restaurant = _mapper.Map(request, restaurant);
+
+            if (!_restaurantAuthorizationService.Authorize(restaurant, ResourceOperation.Update)) throw new ForbiddenException();
+
             await _repository.UpdateAsync(restaurant);
 
         }

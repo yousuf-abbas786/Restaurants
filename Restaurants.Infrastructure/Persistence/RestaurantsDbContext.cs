@@ -32,6 +32,11 @@ namespace Restaurants.Infrastructure.Persistence
                 .WithOne()
                 .HasForeignKey(r => r.RestaurantId);
 
+            builder.Entity<User>()
+                .HasMany(u => u.OwnedRestaurants)
+                .WithOne(r => r.Owner)
+                .HasForeignKey(r => r.OwnerId);
+
             
 
         }

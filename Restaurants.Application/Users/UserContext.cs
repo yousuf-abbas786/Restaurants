@@ -33,8 +33,10 @@ namespace Restaurants.Application.Users
             var nationality = user.FindFirst(c => c.Type == "Nationality")?.Value;
             var dateOfBirthString = user.FindFirst(c => c.Type == "DateOfBirth")?.Value;
             var dateOfBirth = dateOfBirthString == null ? (DateOnly?)null : DateOnly.ParseExact(dateOfBirthString, "yyyy-MM-dd");
+            var restaurantsOwnedString = user.FindFirst(c => c.Type == "RestaurantsOwned")?.Value;
+            var restaurantsOwned = string.IsNullOrEmpty(restaurantsOwnedString) ? (int?)null : int.Parse(restaurantsOwnedString);
 
-            return new CurrentUser(userId, email, roles, nationality, dateOfBirth);
+            return new CurrentUser(userId, email, roles, nationality, dateOfBirth, restaurantsOwned);
         }
     }
 }
